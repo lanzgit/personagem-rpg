@@ -7,9 +7,20 @@ public class Equipe {
 	private String descricao;
 	private LocalDateTime dataFundacao;
 	private int numMembros;
+	private Personagem personagem;
+
+	public String obterEquipe() {
+		return null;
+	}
 
 	public String getNome() {
 		return nome;
+	}
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+	public void setPersonagem(Personagem personagem) {
+		this.personagem = personagem;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
