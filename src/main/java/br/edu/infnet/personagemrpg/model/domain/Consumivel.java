@@ -1,15 +1,67 @@
 package br.edu.infnet.personagemrpg.model.domain;
 
+import br.edu.infnet.personagemrpg.model.exceptions.EquipamentoSemNivel;
+
 public class Consumivel extends Equipamento {
 	private boolean efeito;
-	private String descricao;
-	private int atributo;
+	private int qntUso;
+	private int status;
 
-	public Consumivel(String nome, float valor, float peso, boolean efeito, String descricao, int atributo) {
-		super(nome, valor, peso);
+	public Consumivel(String nome, int nivel, float peso) {
+		super(nome, nivel, peso);
+	}
+
+	public Consumivel(String nome, int nivel, float peso, boolean efeito, int qntUso) throws EquipamentoSemNivel {
+		super(nome, nivel, peso);
 		this.efeito = efeito;
-		this.descricao = descricao;
-		this.atributo = atributo;
+		this.qntUso = qntUso;
+		this.setAtributos();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append(";");
+		sb.append(this.efeito ? "positivo" : "negativo");
+		sb.append(";");
+		sb.append(this.qntUso);
+		sb.append(";");
+		sb.append(this.status);
+
+		return sb.toString();
+	}
+
+	@Override
+	public String infoToSave() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("---- Consumivel ----");
+		sb.append(super.infoToSave());
+		sb.append(this.efeito ? "- Efeito: postivo" : "- Efeito: negativo");
+		sb.append("\r\n");
+		sb.append("- Quantidades de Uso: " + this.qntUso);
+		sb.append("\r\n");
+		sb.append(this.efeito ? "- Status de Efeito: " + "+" + this.status : "- Status de Efeito: " + this.status);
+		sb.append("\r\n");
+
+		return sb.toString();
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public int getQntUso() {
+		return qntUso;
+	}
+
+	public void setQntUso(int qntUso) {
+		this.qntUso = qntUso;
 	}
 
 	public boolean isEfeito() {
@@ -20,27 +72,17 @@ public class Consumivel extends Equipamento {
 		this.efeito = efeito;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public int getAtributo() {
-		return atributo;
-	}
-
-	public void setAtributo(int atributo) {
-		this.atributo = atributo;
-	}
-
 	@Override
-	public void calcularAtributosSecundarios() {
-		
+	public void setAtributos() throws EquipamentoSemNivel {
+		if (getNivel() <= 0) {
+			throw new EquipamentoSemNivel("o item Consumivel nao possui nivel!");
+		}
+
+		if (this.efeito) {
+			this.status = 1 + getNivel();
+		} else {
+			this.status = -1 - getNivel();
+		}
 	}
 
-
-	
 }

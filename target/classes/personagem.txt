@@ -1,0 +1,5 @@
+0;Vinicius;Humano;Guerreiro;Guerreiros do Java;lorem ipsum;10;
+W;Excalibur;2;10;Espada;6;nobre;
+A;Capacete de beseball;2;4;Capacete;plastico;
+C;Pocao de Cura;1;1;positivo;1;2;
+C;Pocao de Veneno;2;1;negativo;3;5;

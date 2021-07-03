@@ -1,15 +1,21 @@
 package br.edu.infnet.personagemrpg.model.domain;
 
+import br.edu.infnet.personagemrpg.model.exceptions.EquipamentoSemNivel;
+
 public class Arma extends Equipamento {
 	private String tipo;
-	private int poderDeAtaque;
+	private int dano;
 	private String material;
 
-	public Arma(String nome, float peso, float valor, String tipo, int poderDeAtaque, String material) {
-		super(nome, peso, valor);
+	public Arma(String nome, int nivel, float peso) {
+		super(nome, nivel, peso);
+	}
+
+	public Arma(String nome, int nivel, float peso, String tipo, String material) throws EquipamentoSemNivel {
+		super(nome, nivel, peso);
 		this.tipo = tipo;
-		this.poderDeAtaque = poderDeAtaque;
 		this.material = material;
+		this.setAtributos();
 	}
 
 	@Override
@@ -20,19 +26,38 @@ public class Arma extends Equipamento {
 		sb.append(";");
 		sb.append(this.tipo);
 		sb.append(";");
-		sb.append(this.poderDeAtaque);
+		sb.append(this.dano);
 		sb.append(";");
 		sb.append(this.material);
-		sb.append(";");
 
-		return super.toString();
+		return sb.toString();
 	}
 
 	@Override
-	public float calcularAtributosSecundarios(int atributoPrincipal) {
-		float atk = (float) (this.poderDeAtaque + (atributoPrincipal * 0.5));
+	public String infoToSave() {
 
-		return atk;
+		StringBuilder sb = new StringBuilder();
+		sb.append("---- Arma ----");
+		sb.append(super.infoToSave());
+		sb.append("- Tipo: " + this.tipo);
+		sb.append("\r\n");
+		sb.append("- Material: " + this.material);
+		sb.append("\r\n");
+		sb.append("- Poder de ataque: " + this.dano);
+		sb.append("\r\n");
+
+		return sb.toString();
+	}
+
+	@Override
+	public void setAtributos() throws EquipamentoSemNivel{
+		if (getNivel() <= 0){
+			throw new EquipamentoSemNivel("a Arma precisa ter nivel!");
+		}
+		this.dano = getNivel() * 2;
+		if ("nobre".equalsIgnoreCase(this.material)){
+			this.dano = getNivel() * 3;
+		}
 	}
 
 	public String getTipo() {
@@ -43,12 +68,12 @@ public class Arma extends Equipamento {
 		this.tipo = tipo;
 	}
 
-	public int getPoderDeAtaque() {
-		return poderDeAtaque;
+	public int getDano() {
+		return dano;
 	}
 
-	public void setPoderDeAtaque(int poderDeAtaque) {
-		this.poderDeAtaque = poderDeAtaque;
+	public void setDano(int dano) {
+		this.dano = dano;
 	}
 
 	public String getMaterial() {

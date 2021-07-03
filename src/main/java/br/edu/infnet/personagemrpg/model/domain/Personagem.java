@@ -1,79 +1,77 @@
 package br.edu.infnet.personagemrpg.model.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import br.edu.infnet.personagemrpg.model.exceptions.PersonagemSemEquipe;
+import br.edu.infnet.personagemrpg.model.exceptions.PersonagemSemNome;
 
 public class Personagem {
 
-	private int id;
 	private String nome;
 	private LocalDateTime dataCriacao;
 	private String raca;
 	private String classe;
 
-	private int forca;
-	private int inteligencia;
-	private int agilidade;
-	private Equipamento equipamento;
+	private Equipe equipe;
 
 	public Personagem() {
+		dataCriacao = LocalDateTime.now();
+	}
+
+	public Personagem(String nome, String raca, String classe) {
+		this();
+		this.nome = nome;
+		this.raca = raca;
+		this.classe = classe;
 	}
 
 	@Override
 	public String toString() {
 
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.id);
 		sb.append(";");
 		sb.append(this.nome);
 		sb.append(";");
-		sb.append(this.dataCriacao);
+		sb.append(this.dataCriacao.format(formato));
 		sb.append(";");
 		sb.append(this.raca);
 		sb.append(";");
 		sb.append(this.classe);
 		sb.append(";");
-		sb.append(this.forca);
-		sb.append(";");
-		sb.append(this.inteligencia);
-		sb.append(";");
-		sb.append(this.agilidade);
+		sb.append(this.equipe);
 
 		return sb.toString();
 	}
 
-	public void imprimeFichaPersonagem() {
-		System.out.println("Personagem " + getId() + ":");
-		System.out.println("Nome: " + getNome());
-		System.out.println("Criado em: " + getDataCriacao());
-		System.out.println("raca: " + getRaca());
-		System.out.println("classe: " + getClasse());
+	public String infoToSave() throws PersonagemSemNome, PersonagemSemEquipe{
 
-		System.out.println("---- Atributos Primarios ----");
-		System.out.println("Forca: " + getForca());
-		System.out.println("Inteligencia: " + getInteligencia());
-		System.out.println("Agilidade: " + getAgilidade());
+		if (this.nome.isBlank() || this.nome.isEmpty()) {
+			throw new PersonagemSemNome("Personagem sem nome!");
+		}
+		if (this.equipe.getNome().isBlank() || this.equipe.getNome().isEmpty()) {
+			throw new PersonagemSemEquipe("Personagem sem equipe");
+		}
 
-		System.out.println("---- Atributos Secundarios ----");
-		System.out.println("Poder de Ataque: ");
-		System.out.println("Defesa: ");
-		System.out.println("Velocidade: ");
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		StringBuilder sb = new StringBuilder();
+		sb.append("---- Ficha do Personagem ----");
+		sb.append("\r\n");
+		sb.append("- Nome: " + this.nome);
+		sb.append("\r\n");
+		sb.append("- Data da criacao: " + this.dataCriacao.format(formato));
+		sb.append("\r\n");
+		sb.append("- Raca: " + this.raca);
+		sb.append("\r\n");
+		sb.append("- Classe: " + this.classe);
+		sb.append("\r\n");
+		sb.append("- Equipe: " + this.equipe.getNome());
+		sb.append("\r\n");
+
+		return sb.toString();
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Equipamento getEquipamento() {
-		return equipamento;
-	}
-
-	public void setEquipamento(Equipamento equipamento) {
-		this.equipamento = equipamento;
-	}
 
 	public String getNome() {
 		return nome;
@@ -107,28 +105,11 @@ public class Personagem {
 		this.classe = classe;
 	}
 
-	public int getForca() {
-		return forca;
+	public Equipe getEquipe() {
+		return equipe;
 	}
 
-	public void setForca(int forca) {
-		this.forca = forca;
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
 	}
-
-	public int getInteligencia() {
-		return inteligencia;
-	}
-
-	public void setInteligencia(int inteligencia) {
-		this.inteligencia = inteligencia;
-	}
-
-	public int getAgilidade() {
-		return agilidade;
-	}
-
-	public void setAgilidade(int agilidade) {
-		this.agilidade = agilidade;
-	}
-
 }

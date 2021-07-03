@@ -1,0 +1,39 @@
+---- Ficha do Personagem ----
+- Nome: Vinicius
+- Data da criacao: 03/07/2021 19:39
+- Raca: Humano
+- Classe: Guerreiro
+- Equipe: Guerreiros do Java
+---- Detalhes da Equipe ----
+- Nome: Guerreiros do Java
+- Descricao: lorem ipsum
+- Data da Fundacao: 03/07/2021 19:39
+- Numero de Membros: 10
+---- Arma ----
+- Nome: Excalibur
+- Nivel: 2
+- Peso: 10.0
+- Tipo: Espada
+- Material: nobre
+- Poder de ataque: 6
+---- Armadura ----
+- Nome: Capacete de beseball
+- Nivel: 2
+- Peso: 4.0
+- Tipo: Capacete
+- Material: plastico
+- Defesa: 4
+---- Consumivel ----
+- Nome: Pocao de Cura
+- Nivel: 1
+- Peso: 1.0
+- Efeito: postivo
+- Quantidades de Uso: 1
+- Status de Efeito: +2
+---- Consumivel ----
+- Nome: Pocao de Veneno
+- Nivel: 2
+- Peso: 1.0
+- Efeito: negativo
+- Quantidades de Uso: 3
+- Status de Efeito: -3
