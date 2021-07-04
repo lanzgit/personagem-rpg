@@ -31,7 +31,6 @@ public class Personagem {
 
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 		StringBuilder sb = new StringBuilder();
-		sb.append(";");
 		sb.append(this.nome);
 		sb.append(";");
 		sb.append(this.dataCriacao.format(formato));

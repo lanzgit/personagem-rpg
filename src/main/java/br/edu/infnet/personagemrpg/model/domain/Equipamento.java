@@ -43,7 +43,7 @@ public abstract class Equipamento {
 		return sb.toString();
 	}
 
-	public abstract void setAtributos() throws EquipamentoSemNivel;
+	protected abstract void setAtributos() throws EquipamentoSemNivel;
 
 	public String getNome() {
 		return nome;

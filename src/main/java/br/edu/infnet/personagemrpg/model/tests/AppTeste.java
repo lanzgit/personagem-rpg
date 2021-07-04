@@ -45,7 +45,7 @@ public class AppTeste {
 							p1.setEquipe(e1);
 							escrita.write(p1.infoToSave());
 							escrita.write(e1.infoToSave());
-							System.out.println(p1);
+							System.out.println("Personagem: " + p1);
 							break;
 						case "W":
 							Arma w1 = new Arma(campos[1], Integer.valueOf(campos[2]), Float.valueOf(campos[3]),

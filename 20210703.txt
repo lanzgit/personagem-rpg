@@ -1,13 +1,13 @@
 ---- Ficha do Personagem ----
 - Nome: Vinicius
-- Data da criacao: 03/07/2021 19:39
+- Data da criacao: 03/07/2021 23:51
 - Raca: Humano
 - Classe: Guerreiro
 - Equipe: Guerreiros do Java
 ---- Detalhes da Equipe ----
 - Nome: Guerreiros do Java
 - Descricao: lorem ipsum
-- Data da Fundacao: 03/07/2021 19:39
+- Data da Fundacao: 03/07/2021 23:51
 - Numero de Membros: 10
 ---- Arma ----
 - Nome: Excalibur
