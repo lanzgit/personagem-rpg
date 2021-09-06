@@ -1,5 +1,7 @@
 package br.edu.infnet.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.edu.infnet.data.IUsuarioRepository;
@@ -17,5 +19,13 @@ public class UsuarioService {
 
 	public void addUsuario(Usuario usuario) {
 		usuarioRepository.save(usuario);
+	}
+
+	public List<Usuario> getAll() {
+		return (List<Usuario>) usuarioRepository.findAll();
+	}
+
+	public void deleteUsuario(Integer id) {
+		usuarioRepository.deleteById(id);
 	}
 }

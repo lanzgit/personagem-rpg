@@ -1,8 +1,21 @@
 package br.edu.infnet.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 import br.edu.infnet.model.exceptions.EquipamentoSemNivel;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Equipamento {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private int nivel;
 	private float peso;
@@ -44,6 +57,14 @@ public abstract class Equipamento {
 	}
 
 	protected abstract void setAtributos() throws EquipamentoSemNivel;
+
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;

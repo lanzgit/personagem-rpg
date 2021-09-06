@@ -1,11 +1,17 @@
 package br.edu.infnet.model.domain;
 
+import javax.persistence.Entity;
+
 import br.edu.infnet.model.exceptions.EquipamentoSemNivel;
 
+@Entity
 public class Arma extends Equipamento {
 	private String tipo;
 	private int dano;
 	private String material;
+
+	public Arma() {
+	}
 
 	public Arma(String nome, int nivel, float peso) {
 		super(nome, nivel, peso);

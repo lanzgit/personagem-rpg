@@ -2,13 +2,29 @@ package br.edu.infnet.model.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Equipe {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private String descricao;
 	private LocalDateTime dataFundacao;
 	private int numMembros;
+
+	@OneToMany
+	@JoinColumn(name = "idPersonagem")
+	private List<Personagem> personagens;
 
 	public Equipe() {
 		dataFundacao = LocalDateTime.now();
@@ -83,5 +99,13 @@ public class Equipe {
 
 	public void setNumMembros(int numMembros) {
 		this.numMembros = numMembros;
+	}
+
+	public List<Personagem> getPersonagens() {
+		return personagens;
+	}
+
+	public void setPersonagens(List<Personagem> personagens) {
+		this.personagens = personagens;
 	}
 }
