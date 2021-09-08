@@ -13,4 +13,6 @@ public interface IPersonagemRepository extends CrudRepository<Personagem, Intege
 	
 	@Query("from Personagem p where p.usuario.id = :userId")
 	public List<Personagem> getAllByUserId(Integer userId);
+
+	Personagem findById(int id);
 }

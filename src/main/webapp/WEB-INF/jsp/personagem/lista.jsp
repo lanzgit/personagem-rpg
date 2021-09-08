@@ -63,10 +63,10 @@
 						<td scope="row">${p.nome}</td>
 						<td scope="row">${p.raca}</td>
 						<td scope="row">${p.classe}</td>
-						<td scope="row">${p.dataCriacao}</td>
+						<td scope="row">${p.dataCriacaoWeb}</td>
 						<td scope="row">${p.equipe}</td>
 						<td scope="row">${p.usuario.nome}</td>
-						<td><a href="/personagem/${a.id}/excluir"><span class="fas fa-trash-alt"></span> Excluir</a></td>
+						<td><a href="/personagem/${p.id}/excluir"><span class="fas fa-trash-alt"></span> Excluir</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

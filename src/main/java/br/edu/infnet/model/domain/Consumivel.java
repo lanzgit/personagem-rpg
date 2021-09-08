@@ -1,7 +1,9 @@
 package br.edu.infnet.model.domain;
 
+import javax.persistence.Entity;
 import br.edu.infnet.model.exceptions.EquipamentoSemNivel;
 
+@Entity
 public class Consumivel extends Equipamento {
 	private boolean efeito;
 	private int qntUso;
@@ -78,6 +80,14 @@ public class Consumivel extends Equipamento {
 			throw new EquipamentoSemNivel("o item Consumivel nao possui nivel!");
 		}
 
+		if (this.efeito) {
+			this.status = 1 + getNivel();
+		} else {
+			this.status = -1 - getNivel();
+		}
+	}
+
+	public void calcConsumivel() {
 		if (this.efeito) {
 			this.status = 1 + getNivel();
 		} else {

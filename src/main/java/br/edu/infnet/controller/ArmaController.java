@@ -30,7 +30,8 @@ public class ArmaController {
 	
 	@PostMapping(value="/arma/incluir")
 	public String incluir(Model model, Arma arma) {
-
+		
+		arma.calcDano();
 		armaService.addArma(arma);
 		model.addAttribute("msg", "Arma cadastrada com sucesso!");
 		

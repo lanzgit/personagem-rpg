@@ -45,7 +45,7 @@ public class PersonagemController {
 	public String deletePersonagem(Model model, @PathVariable Integer id) {
 		personagemService.deletePersonagem(id);
 
-		return "redirect:/personagem/index";
+		return "redirect:/personagem/lista";
 	}
 	
 	

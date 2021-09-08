@@ -1,12 +1,17 @@
 package br.edu.infnet.model.domain;
 
+import javax.persistence.Entity;
 import br.edu.infnet.model.exceptions.EquipamentoSemNivel;
 
+@Entity
 public class Armadura extends Equipamento {
 
 	private String tipo;
 	private int defesa;
 	private String material;
+
+	public Armadura() {
+	}
 
 	public Armadura(String nome, int nivel, float peso) {
 		super(nome, nivel, peso);
@@ -78,6 +83,13 @@ public class Armadura extends Equipamento {
 		if (getNivel() <= 0) {
 			throw new EquipamentoSemNivel("a Armadura precisa ter nivel!");
 		}
+		this.defesa = getNivel() * 2;
+		if ("nobre".equalsIgnoreCase(this.material)) {
+			this.defesa = getNivel() * 3;
+		}
+	}
+
+	public void calcDef() {
 		this.defesa = getNivel() * 2;
 		if ("nobre".equalsIgnoreCase(this.material)) {
 			this.defesa = getNivel() * 3;

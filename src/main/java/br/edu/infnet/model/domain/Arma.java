@@ -66,6 +66,13 @@ public class Arma extends Equipamento {
 		}
 	}
 
+	public void calcDano() {
+		this.dano = getNivel() * 2;
+		if ("nobre".equalsIgnoreCase(this.material)){
+			this.dano = getNivel() * 3;
+		}
+	}
+
 	public String getTipo() {
 		return tipo;
 	}

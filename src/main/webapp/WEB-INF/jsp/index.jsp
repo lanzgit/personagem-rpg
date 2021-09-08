@@ -14,12 +14,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<c:import url="/WEB-INF/resources/templates/menu.jsp"/>
 	
-	<div class="container">
-	  <h3>Java WEB</h3>
-	  <h4>AT</h4>
-	  
-	  <p> <a href="">GITHUB</a> </p>
-	</div>
-
+	<div class="jumbotron">
+	    <div class="container">
+      		<h1> Teste de Performance 3 </h1>
+			<h3><a href="https://github.com/lanzgit/personagem-rpg"><span class="fab fa-github"></span>
+				github
+			</a></h3>
+    	</div>
+  	</div>
 </body>
 </html>

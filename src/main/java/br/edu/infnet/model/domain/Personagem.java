@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import br.edu.infnet.model.exceptions.PersonagemSemEquipe;
 import br.edu.infnet.model.exceptions.PersonagemSemNome;
 
@@ -22,19 +24,22 @@ public class Personagem {
 	private Integer id;
 
 	private String nome;
-	private LocalDateTime dataCriacao;
+	@Transient
+	private transient LocalDateTime dataCriacao;
+	private String dataCriacaoWeb;
 	private String raca;
 	private String classe;
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
-
 	@ManyToOne
 	@JoinColumn(name = "idEquipe")
 	private Equipe equipe;
+	@Transient
+	private transient DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public Personagem() {
-		dataCriacao = LocalDateTime.now();
+		dataCriacaoWeb = LocalDateTime.now().format(FORMATTER);
 	}
 
 	public Personagem(String nome, String raca, String classe) {
@@ -144,5 +149,13 @@ public class Personagem {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getDataCriacaoWeb() {
+		return dataCriacaoWeb;
+	}
+
+	public void setDataCriacaoWeb(String dataCriacaoWeb) {
+		this.dataCriacaoWeb = dataCriacaoWeb;
 	}
 }

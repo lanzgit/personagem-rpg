@@ -20,6 +20,12 @@ public class PersonagemService {
 		return (List<Personagem>) personagemRepository.findAll();
 	}
 
+	public Personagem getPersonagemById(int id) {
+		
+		Personagem personagem = personagemRepository.findById(id);
+		return personagem;
+	}
+
 	public void createPersonagem(Personagem personagem) {
 		personagemRepository.save(personagem);
 	}

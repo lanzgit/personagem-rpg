@@ -70,12 +70,23 @@ public abstract class Equipamento {
 		return nome;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}	
+
 	public int getNivel() {
 		return nivel;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 
 	public float getPeso() {
 		return peso;
 	}
 
+	public void setPeso(float peso) {
+		this.peso = peso;
+	}
 }
