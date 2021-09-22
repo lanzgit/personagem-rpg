@@ -17,8 +17,8 @@ public class PersonagemTeste {
 		
 		Personagem p1 = new Personagem();
 		p1.setNome("Vinicius");
-		p1.setEquipe(e1);
+		// p1.setEquipe(e1);
 		p1.setDataCriacao(LocalDateTime.now());
-		System.out.println("Personagem: " + p1.getEquipe().getNome());
+		// System.out.println("Personagem: " + p1.getEquipe().getNome());
 	}
 }

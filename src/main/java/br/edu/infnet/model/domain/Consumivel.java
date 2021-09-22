@@ -9,6 +9,9 @@ public class Consumivel extends Equipamento {
 	private int qntUso;
 	private int status;
 
+	public Consumivel() {
+	}
+
 	public Consumivel(String nome, int nivel, float peso) {
 		super(nome, nivel, peso);
 	}

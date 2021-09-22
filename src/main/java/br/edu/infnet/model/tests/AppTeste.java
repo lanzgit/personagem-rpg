@@ -40,9 +40,9 @@ public class AppTeste {
 
 					switch (campos[0].toUpperCase()) {
 						case "0":
-							Equipe e1 = new Equipe(campos[4], campos[5], Integer.valueOf(campos[6]));
+							Equipe e1 = new Equipe(campos[4], campos[5]);
 							Personagem p1 = new Personagem(campos[1], campos[2], campos[3]);
-							p1.setEquipe(e1);
+							// p1.setEquipe(e1);
 							escrita.write(p1.infoToSave());
 							escrita.write(e1.infoToSave());
 							System.out.println("Personagem: " + p1);

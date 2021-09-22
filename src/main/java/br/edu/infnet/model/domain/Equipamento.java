@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import br.edu.infnet.model.exceptions.EquipamentoSemNivel;
 
@@ -19,6 +22,12 @@ public abstract class Equipamento {
 	private String nome;
 	private int nivel;
 	private float peso;
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	@OneToOne
+	@JoinColumn(name = "idPersonagem")
+	private Personagem personagem;
 
 	public Equipamento() {
 	}
@@ -28,6 +37,7 @@ public abstract class Equipamento {
 		this.nivel = nivel;
 		this.peso = peso;
 	}
+
 
 	@Override
 	public String toString() {
@@ -57,6 +67,7 @@ public abstract class Equipamento {
 	}
 
 	protected abstract void setAtributos() throws EquipamentoSemNivel;
+
 
 	public Integer getId() {
 		return id;
@@ -88,5 +99,21 @@ public abstract class Equipamento {
 
 	public void setPeso(float peso) {
 		this.peso = peso;
+	}
+
+	public void setPersonagem(Personagem personagem) {
+		this.personagem = personagem;
+	}
+
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
 }

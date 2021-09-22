@@ -3,7 +3,10 @@ package br.edu.infnet.model.domain;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +25,6 @@ public class Personagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
 	private String nome;
 	@Transient
 	private transient LocalDateTime dataCriacao;
@@ -32,8 +34,8 @@ public class Personagem {
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
-	@ManyToOne
 	@JoinColumn(name = "idEquipe")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Equipe equipe;
 	@Transient
 	private transient DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");

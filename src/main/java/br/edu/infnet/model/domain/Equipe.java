@@ -4,12 +4,17 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Equipe {
@@ -19,21 +24,27 @@ public class Equipe {
 	private Integer id;
 	private String nome;
 	private String descricao;
-	private LocalDateTime dataFundacao;
+	@Transient
+	private transient LocalDateTime dataFundacao;
+	private String dataFundacaoWeb;
 	private int numMembros;
-
-	@OneToMany
-	@JoinColumn(name = "idPersonagem")
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	@JoinColumn(name = "idEquipe")
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Personagem> personagens;
+	@Transient
+	private transient DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public Equipe() {
-		dataFundacao = LocalDateTime.now();
+		dataFundacaoWeb = LocalDateTime.now().format(FORMATTER);
 	}
-	public Equipe(String nome, String descricao, int numMembros) {
+
+	public Equipe(String nome, String descricao) {
 		this();
 		this.nome = nome;
 		this.descricao = descricao;
-		this.numMembros = numMembros;
 	}
 
 	@Override
@@ -77,6 +88,22 @@ public class Equipe {
 		this.nome = nome;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -98,7 +125,7 @@ public class Equipe {
 	}
 
 	public void setNumMembros(int numMembros) {
-		this.numMembros = numMembros;
+		this.numMembros = personagens.size();
 	}
 
 	public List<Personagem> getPersonagens() {
@@ -107,5 +134,13 @@ public class Equipe {
 
 	public void setPersonagens(List<Personagem> personagens) {
 		this.personagens = personagens;
+	}
+
+	public String getDataFundacaoWeb() {
+		return dataFundacaoWeb;
+	}
+
+	public void setDataFundacaoWeb(String dataFundacaoWeb) {
+		this.dataFundacaoWeb = dataFundacaoWeb;
 	}
 }

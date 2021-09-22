@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
 <!doctype html>
 <html lang="pt-BR">
 
@@ -15,7 +15,7 @@
 		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-light">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -27,39 +27,45 @@
 		crossorigin="anonymous"></script>
 	<c:import url="/WEB-INF/resources/templates/menu.jsp" />
 
-	<div class="container-fluid" style="width: 75%;">
-	<h3>Criação de Personagem</h3>
-	<form action="/personagem/incluir" method="POST">
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Nome</label>
-				<input type="text" class="form-control" name="nome" placeholder="Nome">
-			</div>
-			<div class="form-group col-md-6">
-				<label>Raça</label>
-				<select class="form-control" name="raca">
-					<option selected="selected">Humano</option>
-					<option>Orc</option>
-					<option>Elfo</option>
-					<option>Anão</option>
-				</select>
-			</div>
+	<header class="bg-primary bg-gradient text-white" style="padding-top: 5rem; padding-bottom: 6rem;">
+		<div class="container px-4 text-center">
+			<h1 class="fw-bolder">Criacao de Personagem</h1>
 		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Classe</label>
-				<input type="text" class="form-control" name="classe" placeholder="Classe">
-			</div>
-			<div class="form-group col-md-6">
-				<label>Equipe</label>
-				<input type="text" class="form-control" name="equipe" placeholder="Equipe" disabled>
-			</div>
+	</header>
+
+	<main role="main" class="container">
+		<div class="my-3 p-3 bg-white rounded shadow-lg">
+			<h5 class="border-bottom border-dark pb-2 mb-0">Dados do Personagem</h5><br>
+			<form action="/personagem/incluir" method="POST">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Nome</label>
+						<input type="text" class="form-control" name="nome" placeholder="Nome">
+					</div>
+					<div class="form-group col-md-6">
+						<label>Raça</label>
+						<select class="form-control" name="raca">
+							<option selected="selected">Humano</option>
+							<option>Orc</option>
+							<option>Elfo</option>
+							<option>Anão</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Classe</label>
+						<input type="text" class="form-control" name="classe" placeholder="Classe">
+					</div>
+					<div class="form-group col-md-6">
+						<label>Equipe</label>
+						<input type="text" class="form-control" name="equipe" placeholder="Equipe">
+					</div>
+				</div>
+				<button class="btn btn-primary" type="submit">Salvar</button>
+			</form>
 		</div>
-		<div class="container-fluid">
-			<button class="btn btn-primary" type="submit">Salvar</button>
-		</div>
-	</form>
-	</div>
+	</main>
 </body>
 
 </html>
