@@ -26,5 +26,12 @@ public class DataLoader implements ApplicationRunner {
 
 		usuarioService.addUsuario(usuario);
 		System.out.println("Adm incluído");	
+
+		Usuario cobaia = new Usuario();
+		cobaia.setNome("Cobaia");
+		cobaia.setEmail("cobaia@gmail.com");
+		cobaia.setSenha("1234");
+		cobaia.setAdmin(false);
+		usuarioService.addUsuario(cobaia);
 	}
 }

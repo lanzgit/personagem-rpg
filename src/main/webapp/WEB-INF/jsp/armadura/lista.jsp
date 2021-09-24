@@ -1,7 +1,7 @@
-<!-- <%@page import="br.edu.infnet.model.domain.Arma"%>
+<%@page import="br.edu.infnet.model.domain.Arma"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -41,8 +41,8 @@
 		<div class="my-3 p-3 bg-white rounded shadow-lg">
 			<c:if test="${not empty lista}">
 				<c:if test="${not empty msg}">
-					<div class="alert alert-success">
-						<strong></strong> ${msg}
+					<div class="alert alert-warning">
+						<strong><i class="fas fa-envelope-open-text"></i></strong> ${msg}
 					</div>
 				</c:if>
 				<h5 class="border-bottom border-dark pb-2 mb-0">Lista de Armaduras</h5>
@@ -69,12 +69,18 @@
 								<td scope="row">${a.tipo}</td>
 								<td scope="row">${a.defesa}</td>
 								<td scope="row">${a.material}</td>
-								<td><a href="/arma/${a.id}/excluir"><span class="fas fa-trash-alt"></span> Excluir</a>
+								<td><a href="/armadura/${a.id}/excluir"><span class="fas fa-trash-alt"></span>
+										Excluir</a>
 								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+			</c:if>
+			<c:if test="${empty lista}">
+				<div class="alert alert-danger">
+					<strong><i class="fas fa-exclamation-triangle"></i> Não há armaduras criadas, crie uma!</strong>
+				</div>
 			</c:if>
 		</div>
 	</main>

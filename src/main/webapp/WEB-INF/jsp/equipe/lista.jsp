@@ -1,13 +1,13 @@
-<!-- <%@page import="br.edu.infnet.model.domain.Personagem"%>
+<%@page import="br.edu.infnet.model.domain.Personagem"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %> -->
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="pt-BR">
 
 <head>
-	<title>Title</title>
+	<title>Equipes</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -44,8 +44,8 @@
 			<h5 class="border-bottom border-dark pb-2 mb-0">Listagem de Equipes</h5>
 			<c:if test="${not empty lista}">
 				<c:if test="${not empty msg}">
-					<div class="alert alert-success">
-						<strong>!</strong> ${msg}
+					<div class="alert alert-warning">
+						<strong><i class="fas fa-envelope-open-text"></i></strong> ${msg}
 					</div>
 				</c:if>
 				<table class="table table-hover table-sm">
@@ -69,12 +69,12 @@
 								<td scope="row">${e.personagens.size()}</td>
 								<td scope="row">
 									<c:forEach var="p" items="${e.personagens}">
-										- ${p.nome}<br>
+										<i class="fas fa-user"></i> ${p.nome}<br>
 									</c:forEach>
 								</td>
 								<td scope="row">${e.usuario.nome}</td>
 								<td>
-									<a href="/equipe/${p.id}/excluir"><span class="fas fa-trash-alt"></span> Excluir</a>
+									<a href="/equipe/${e.id}/excluir"><span class="fas fa-trash-alt"></span> Excluir</a>
 									<br>
 									<a href="#"><span class="fa fa-eye"></span> Detalhes</a>
 								</td>
@@ -82,6 +82,11 @@
 						</c:forEach>
 					</tbody>
 				</table>
+			</c:if>
+			<c:if test="${empty lista}">
+				<div class="alert alert-danger">
+					<strong><i class="fas fa-exclamation-triangle"></i> Não há equipes criadas, crie uma!</strong> 
+				</div>
 			</c:if>
 		</div>
 	</main>

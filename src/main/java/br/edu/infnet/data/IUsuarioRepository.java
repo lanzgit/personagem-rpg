@@ -1,5 +1,7 @@
 package br.edu.infnet.data;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,4 +15,5 @@ public interface IUsuarioRepository extends CrudRepository<Usuario, Integer> {
 	public Usuario autenticacao(String email, String senha);
 
 	Usuario findById(int id);
+	List<Usuario> findByOrderByNomeAsc();
 }

@@ -1,8 +1,8 @@
-<!-- <%@page import="br.edu.infnet.model.domain.Personagem"%>
+<%@page import="br.edu.infnet.model.domain.Personagem"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %> -->
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -47,8 +47,8 @@
 			<h5 class="border-bottom border-dark pb-2 mb-0">Lista de Personagens</h5>
 			<c:if test="${not empty lista}">
 				<c:if test="${not empty msg}">
-					<div class="alert alert-success">
-						<strong><a class="fas fa-leaf"></a></strong> ${msg}
+					<div class="alert alert-warning">
+						<strong><i class="fas fa-envelope-open-text"></i></strong> ${msg}
 					</div>
 				</c:if>
 				<table class="table table-hover table-sm">
@@ -60,6 +60,7 @@
 							<th scope="col">Classe</th>
 							<th scope="col">Data de Criação</th>
 							<th scope="col">Equipe</th>
+							<th scope="col">Equipamentos</th>
 							<th scope="col">Usuario</th>
 							<th scope="col">Acoes</th>
 						</tr>
@@ -73,18 +74,33 @@
 								<td scope="row">${p.classe}</td>
 								<td scope="row">${p.dataCriacaoWeb}</td>
 								<td scope="row">${p.equipe.nome}</td>
+								<td scope="row">
+									<c:forEach var="e" items="${p.equipamentos}">
+										<i class="fas fa-hat-wizard"></i> ${e.nome}<br>
+									</c:forEach>
+								</td>
 								<td scope="row">${p.usuario.nome}</td>
 								<td>
-									<a href="/personagem/${p.id}/excluir"><span class="fas fa-trash-alt"></span>
-										Excluir</a>
-									<br>
-									<a href="#"><span class="fas fa-scroll"></span> Ficha</a>
-									<!-- <button type="button" class="btn btn-warning fas fa-scroll"> seila</button> -->
+									<form action="/personagem/${p.id}/excluir" method="GET">
+										<button type="submit" class="btn btn-light" name="id" value="${p.id}">
+											<span class="fas fa-trash-alt"></span> Excluir
+										</button>
+									</form>
+									<form action="/ficha" method="get">
+										<button type="submit" class="btn btn-light" name="id" value="${p.id}">
+											<span class="fas fa-scroll"></span> Ficha
+										</button>
+									</form>
 								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+			</c:if>
+			<c:if test="${empty lista}">
+				<div class="alert alert-danger">
+					<strong><i class="fas fa-exclamation-triangle"></i> Não há personagens criados, crie um!</strong> 
+				</div>
 			</c:if>
 		</div>
 	</main>

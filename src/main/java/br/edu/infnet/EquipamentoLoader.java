@@ -1,13 +1,18 @@
 package br.edu.infnet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.model.domain.Arma;
 import br.edu.infnet.model.domain.Armadura;
 import br.edu.infnet.model.domain.Consumivel;
+import br.edu.infnet.model.domain.Equipamento;
 import br.edu.infnet.model.domain.Usuario;
 import br.edu.infnet.services.ArmaService;
 import br.edu.infnet.services.ArmaduraService;
@@ -15,6 +20,7 @@ import br.edu.infnet.services.ConsumivelService;
 import br.edu.infnet.services.UsuarioService;
 
 @Component
+@Order(2)
 public class EquipamentoLoader implements ApplicationRunner {
 
 
@@ -58,6 +64,7 @@ public class EquipamentoLoader implements ApplicationRunner {
 		c1.setStatus(2);
 		c1.setQntUso(3);
 		c1.setAtributos();
+		c1.setUsuario(usuario);
 		consumivelService.addConsumivel(c1);
 		
 		Consumivel c2 = new Consumivel("Poção de Veneno", 3, 1);
@@ -65,7 +72,12 @@ public class EquipamentoLoader implements ApplicationRunner {
 		c2.setStatus(3);
 		c2.setQntUso(1);
 		c2.setAtributos();
+		c2.setUsuario(usuario);
 		consumivelService.addConsumivel(c2);
 
+		System.out.println("w1: " + w1.getId());
+		System.out.println("a1: " + a1.getId());
+		System.out.println("c1: " + c1.getId());
 	}
+
 }

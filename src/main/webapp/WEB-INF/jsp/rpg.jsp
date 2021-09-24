@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
-	<meta charset="UTF-8">
+	<title>PRG</title>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Cadastrar Usuario</title>
+
+	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -27,40 +29,26 @@
 
 	<header class="bg-primary bg-gradient text-white" style="padding-top: 5rem; padding-bottom: 6rem;">
 		<div class="container px-4 text-center">
-			<h1 class="fw-bolder">Criacao de Usuario</h1>
+			<h1 class="fw-bolder">RPGapp</h1>
 		</div>
 	</header>
 
 	<main role="main" class="container">
-		<div class="my-3 p-3 bg-white rounded shadow-lg">
 
-			<c:if test="${not empty mensagem}">
-				<div class="alert alert-danger">
-					<strong>Problema!</strong> ${mensagem}
-				</div>
-			</c:if>
-
-			<h5 class="border-bottom border-secondary pb-2 mb-0">Dados Cadastrais</h5><br>
-			<form action="/usuario" method="post">
-
-				<div class="form-group">
-					<label>Nome:</label>
-					<input type="text" class="form-control" placeholder="Entre com o seu nome" name="nome" value="Batman">
-				</div>
-
-				<div class="form-group">
-					<label>Email:</label>
-					<input type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email" value="batman@gmail.com">
-				</div>
-
-				<div class="form-group">
-					<label>Senha:</label>
-					<input type="password" class="form-control" placeholder="Entre com a sua senha" name="senha" value="1234">
-				</div>
-
-				<button type="submit" class="btn btn-primary">Cadastrar</button>
-			</form>
+		<div class="my-3 p-3 bg-white rounded shadow-lg container-sm">
+			<h5 class="pb-2 mb-0">Dados Gerais</h5><br>
+			<ul class="list-group list-group-flush">
+				<c:forEach var="mapa" items="${mapaTotal}">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						${mapa.key}
+						<span class="badge badge-pill badge-dark">
+							${mapa.value}
+						</span>
+					</li>
+				</c:forEach>
+			</ul>
 		</div>
+
 	</main>
 </body>
 

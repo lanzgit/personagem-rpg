@@ -121,11 +121,11 @@ public class Equipe {
 	}
 
 	public int getNumMembros() {
-		return numMembros;
+		return personagens.size();
 	}
 
 	public void setNumMembros(int numMembros) {
-		this.numMembros = personagens.size();
+		this.numMembros = numMembros;
 	}
 
 	public List<Personagem> getPersonagens() {

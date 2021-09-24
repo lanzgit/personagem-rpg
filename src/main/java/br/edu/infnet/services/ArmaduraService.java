@@ -18,6 +18,10 @@ public class ArmaduraService {
 		return (List<Armadura>) armaduraRepository.findAll();
 	}
 
+	public List<Armadura> getArmadurasByUsuarioId(Integer usuarioId) {
+		return armaduraRepository.findByUsuarioIdOrderByNomeAsc(usuarioId);	
+	}
+
 	public void addArmadura(Armadura armadura) {
 		armaduraRepository.save(armadura);
 	}
@@ -28,6 +32,10 @@ public class ArmaduraService {
 
 	public Armadura getById(Integer id) {
 		return armaduraRepository.findById(id).orElse(null);
+	}
+
+	public Integer getArmaduraQntd() {
+		return (int) armaduraRepository.count();	
 	}
 	
 }

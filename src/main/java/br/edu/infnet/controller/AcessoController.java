@@ -1,5 +1,8 @@
 package br.edu.infnet.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.model.domain.Usuario;
+import br.edu.infnet.services.ArmaService;
+import br.edu.infnet.services.ArmaduraService;
+import br.edu.infnet.services.ConsumivelService;
+import br.edu.infnet.services.EquipeService;
+import br.edu.infnet.services.PersonagemService;
 import br.edu.infnet.services.UsuarioService;
 
 @SessionAttributes("user")
@@ -20,12 +28,39 @@ public class AcessoController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
+	private PersonagemService personagemService;
+	@Autowired
+	private EquipeService equipeService;
+	@Autowired
+	private ArmaService armaService;
+	@Autowired
+	private ArmaduraService armaduraService;
+	@Autowired
+	private ConsumivelService consumivelService;
 
 	@GetMapping(value = "/")
 	public String telaHome() {
 		return "index";
 	}
 
+	@GetMapping(value="/rpg")
+	public String telaRpg(Model model) {
+
+		Map<String, Integer> mapataTotal = new HashMap<String, Integer>();
+		mapataTotal.put("Usuarios", usuarioService.getUsuarioQntd());
+		mapataTotal.put("Personagens", personagemService.getPersonagemQntd());
+		mapataTotal.put("Equipe", equipeService.getEquipeQntd());
+		mapataTotal.put("Arma", armaService.getArmaQntd());
+		mapataTotal.put("Armadura", armaduraService.getArmaduraQntd());
+		mapataTotal.put("Consumivel", consumivelService.getConsumivelQntd());
+
+		model.addAttribute("mapaTotal", mapataTotal);
+
+		return "rpg";
+	}
+	
+	  
 	@GetMapping(value = "/login")
 	public String telaLogin() {
 		return "login";	

@@ -13,4 +13,6 @@ public interface IArmaRepository extends CrudRepository<Arma, Integer> {
 	
 	@Query("from Arma a where a.usuario.id = :userId")
 	public List<Arma> getArmaList(Integer userId);
+
+	List<Arma> findByUsuarioIdOrderByNomeAsc(Integer userId);
 }

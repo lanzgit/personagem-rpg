@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -41,7 +41,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Nome</label>
-						<input type="text" class="form-control" name="nome" placeholder="Nome">
+						<input type="text" class="form-control" name="nome" placeholder="Nome" value="BatEspada">
 					</div>
 					<div class="form-group col-md-6">
 						<label>Tipo</label>
@@ -68,11 +68,11 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Material</label>
-						<input type="text" class="form-control" name="material" placeholder="tipo de material">
+						<input type="text" class="form-control" name="material" placeholder="tipo de material" value="nobre">
 					</div>
 					<div class="form-group col-md-6">
 						<label>Peso</label>
-						<input type="text" class="form-control" name="peso" placeholder="peso em kg">
+						<input type="text" class="form-control" name="peso" placeholder="peso em kg" value="1">
 					</div>
 				</div>
 				<button class="btn btn-primary" type="submit">Salvar</button>

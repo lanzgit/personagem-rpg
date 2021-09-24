@@ -2,9 +2,9 @@ package br.edu.infnet.model.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,8 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.hibernate.engine.internal.CascadePoint;
 
 import br.edu.infnet.model.exceptions.PersonagemSemEquipe;
 import br.edu.infnet.model.exceptions.PersonagemSemNome;
@@ -37,6 +41,9 @@ public class Personagem {
 	@JoinColumn(name = "idEquipe")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Equipe equipe;
+	@JoinColumn(name = "idPersonagem")
+	@OneToMany(cascade = CascadeType.DETACH)
+	private List<Equipamento> equipamentos;
 	@Transient
 	private transient DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -96,6 +103,14 @@ public class Personagem {
 		return sb.toString();
 	}
 
+
+	public void setEquipamentos(List<Equipamento> equipamentos) {
+		this.equipamentos = equipamentos;
+	}
+	
+	public List<Equipamento> getEquipamentos() {
+		return equipamentos;
+	}
 
 	public String getNome() {
 		return nome;

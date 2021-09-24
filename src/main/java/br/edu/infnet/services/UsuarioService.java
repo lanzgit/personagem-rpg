@@ -25,11 +25,19 @@ public class UsuarioService {
 		return (List<Usuario>) usuarioRepository.findAll();
 	}
 
+	public List<Usuario> getAllByOrderName() {
+		return usuarioRepository.findByOrderByNomeAsc();	
+	}
+
 	public void deleteUsuario(Integer id) {
 		usuarioRepository.deleteById(id);
 	}
 
 	public Usuario getUsuarioById(int id) {
 		return usuarioRepository.findById(id);
+	}
+
+	public Integer getUsuarioQntd() {
+		return (int) usuarioRepository.count();
 	}
 }

@@ -13,4 +13,8 @@ public interface IEquipamentoRepository extends CrudRepository<Equipamento, Inte
 	
 	@Query("from Equipamento e where e.usuario.id = :userId")
 	public List<Equipamento> getEquipamentoList(Integer userId);
+
+	List<Equipamento> findByPersonagemId(Integer personagemId);
+	List<Equipamento> findTop10ByOrderByNomeDesc();
+	List<Equipamento> findByUsuarioIdOrderByNomeAsc(Integer userId);
 }

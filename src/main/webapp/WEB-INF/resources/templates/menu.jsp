@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">RPG</a>
+  <a class="navbar-brand" href="/rpg">RPG</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -27,7 +27,7 @@
           <a class="dropdown-item" href="/armadura/lista">Armadura</a>
           <a class="dropdown-item" href="/consumivel/lista">Consumivel</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Todos</a>
+          <a class="dropdown-item" href="/equipamento/lista">Todos</a>
         </div>
       </li>
       <li class="nav-item">

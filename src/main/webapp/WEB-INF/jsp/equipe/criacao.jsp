@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -36,26 +36,32 @@
 	<main role="main" class="container">
 		<div class="my-3 p-3 bg-white rounded shadow-lg">
 			<h5 class="border-bottom border-dark pb-2 mb-0">Dados da Equipe</h5>
+			<c:if test="${not empty msg}">
+				<div class="alert alert-danger">
+					<strong></strong> ${msg}
+				</div>
+			</c:if>
 			<form action="/equipe/incluir" method="POST">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Nome</label>
-						<input type="text" class="form-control" name="nome" placeholder="Nome da Equipe">
+						<input type="text" class="form-control" name="nome" placeholder="Nome da Equipe" value="Liga Da Justiça">
 					</div>
 					<div class="form-group col-md-6">
 						<label>Descricao</label>
-						<input type="text" class="form-control" name="descricao" placeholder="Descricao da Equipe">
+						<input type="text" class="form-control" name="descricao" placeholder="Descricao da Equipe" value="lorem ipsum">
 					</div>
 				</div>
 				<div class="form-row">
-					<h6>Personagens Disponiveis</h6>
 					<c:if test="${not empty personagens}">
+						<h6>Personagens Disponiveis</h6>
 						<table class="table table-hover table-sm">
 							<thead class="thead-dark">
 								<tr>
 									<th>Personagem</th>
 									<th>Classe</th>
 									<th>Raca</th>
+									<th>Equipamentos</th>
 									<th>Adicionar</th>
 								</tr>
 							</thead>
@@ -66,6 +72,11 @@
 											<td scope="row">${p.nome}</td>
 											<td>${p.classe}</td>
 											<td>${p.raca}</td>
+											<td scope="row">
+												<c:forEach var="e" items="${p.equipamentos}">
+													<i class="fas fa-hat-wizard"></i> ${e.nome}<br>
+												</c:forEach>
+											</td>
 											<td>
 												<input type="checkbox" class="form-check-input" value="${p.id}"
 													name="personagemId">
@@ -75,14 +86,16 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						<!-- <label>Personagens Disponiveis</label>
-					<select class="form-control" name="personagemId">
-						<option value="${p.id}">${p.nome}</option>
-					</select> -->
+						<button class="btn btn-primary" type="submit">Salvar</button>
 					</c:if>
-				</div>
-				<div class="container-fluid">
-					<button class="btn btn-primary" type="submit">Salvar</button>
+					<c:if test="${empty personagens}">
+						<h6><strong>Não há personagens Disponíveis</strong></h6>
+						<div class="container-fluid">
+							<a href="/equipe/lista">
+								<button class="btn btn-danger" type="button">Voltar</button>
+							</a>
+						</div>
+					</c:if>
 				</div>
 			</form>
 		</div>

@@ -19,6 +19,10 @@ public class ConsumivelService {
 		return consumivelRepository.getConsumivelList(usuario.getId());
 	}
 
+	public List<Consumivel> getConsumiveisByUsuarioId(Integer usuarioId) {
+		return consumivelRepository.findByUsuarioIdOrderByNomeAsc(usuarioId);	
+	}
+
 	public Consumivel getConsumivelById(Integer id) {
 		return consumivelRepository.findById(id).orElse(null);
 	}
@@ -33,5 +37,9 @@ public class ConsumivelService {
 
 	public void deleteConsumivel(Integer id) {
 		consumivelRepository.deleteById(id);;
+	}
+
+	public Integer getConsumivelQntd() {
+		return (int) consumivelRepository.count();	
 	}
 }

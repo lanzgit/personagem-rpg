@@ -17,7 +17,7 @@ import br.edu.infnet.services.PersonagemService;
 import br.edu.infnet.services.UsuarioService;
 
 @Component
-@Order(3)
+@Order(4)
 public class EquipeLoader implements ApplicationRunner{
 
 	@Autowired

@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -40,7 +40,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Nome</label>
-						<input type="text" class="form-control" name="nome" placeholder="Nome">
+						<input type="text" class="form-control" name="nome" placeholder="Nome" value="Robin">
 					</div>
 					<div class="form-group col-md-6">
 						<label>Raça</label>
@@ -55,12 +55,34 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Classe</label>
-						<input type="text" class="form-control" name="classe" placeholder="Classe">
+						<input type="text" class="form-control" name="classe" placeholder="Classe" value="Super-Herói">
 					</div>
-					<div class="form-group col-md-6">
-						<label>Equipe</label>
-						<input type="text" class="form-control" name="equipe" placeholder="Equipe">
-					</div>
+				</div>
+				<div class="form-row">
+					<h6>Equipamentos Disponiveis</h6>
+					<table class="table table-hover table-sm">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Nivel</th>
+								<th>Peso</th>
+								<th>Equipar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="e" items="${equipamentos}">
+								<tr>
+									<td scope="row">${e.nome}</td>
+									<td>${e.nivel}</td>
+									<td>${e.peso}</td>
+									<td>
+										<input type="checkbox" class="form-check-input" value="${e.id}"
+											name="equipamentoId">
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
 				<button class="btn btn-primary" type="submit">Salvar</button>
 			</form>

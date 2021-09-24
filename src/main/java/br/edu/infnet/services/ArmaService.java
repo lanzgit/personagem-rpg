@@ -18,6 +18,11 @@ public class ArmaService {
 		return (List<Arma>) armaRepository.findAll();
 	}
 
+	public List<Arma> getArmasByUsuarioByOrder(Integer usuarioId) {
+		return armaRepository.findByUsuarioIdOrderByNomeAsc(usuarioId);
+		
+	}
+
 	public void addArma(Arma arma) {
 		armaRepository.save(arma);
 	}
@@ -28,5 +33,9 @@ public class ArmaService {
 
 	public Arma getById(Integer id) {
 		return armaRepository.findById(id).orElse(null);
+	}
+
+	public Integer getArmaQntd() {
+		return (int) armaRepository.count();	
 	}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.edu.infnet.data.IPersonagemRepository;
-import br.edu.infnet.model.domain.Equipe;
 import br.edu.infnet.model.domain.Personagem;
 import br.edu.infnet.model.domain.Usuario;
 
@@ -18,10 +17,10 @@ public class PersonagemService {
 		return personagemRepository.getAllByUserId(usuario.getId());
 	}
 
-	// public List<Personagem> getAllByEquipeId(Equipe equipe) {
-	// 	return personagemRepository.getAllByEquipeId(equipe.getId());
-		
-	// }
+	public List<Personagem> getAllByOrderName(Usuario usuario) {
+		return personagemRepository.findByUsuarioIdOrderByNomeAsc(usuario.getId());
+
+	}
 	public List<Personagem> getAll() {
 		return (List<Personagem>) personagemRepository.findAll();
 	}
@@ -38,5 +37,9 @@ public class PersonagemService {
 
 	public void deletePersonagem(Integer id) {
 		personagemRepository.deleteById(id);
+	}
+
+	public Integer getPersonagemQntd() {
+		return (int) personagemRepository.count();
 	}
 }

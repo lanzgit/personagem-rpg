@@ -14,8 +14,9 @@ public interface IPersonagemRepository extends CrudRepository<Personagem, Intege
 	@Query("from Personagem p where p.usuario.id = :userId")
 	public List<Personagem> getAllByUserId(Integer userId);
 
-	// @Query("from Personagem p where p.equipe.id = :equipeId")
-	// public List<Personagem> getAllByEquipeId(Integer equipeId);
+	List<Personagem> findByUsuarioIdOrderByNomeAsc(Integer userId);
 
 	Personagem findById(int id);
+	// List<Personagem> findAllByOrderByNomeAsc(Integer userId);
+
 }

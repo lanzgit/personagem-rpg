@@ -36,4 +36,8 @@ public class EquipeService {
 		equipeRepository.deleteById(id);
 	}
 
+	public Integer getEquipeQntd() {
+		return (int) equipeRepository.count();	
+	}
+
 }

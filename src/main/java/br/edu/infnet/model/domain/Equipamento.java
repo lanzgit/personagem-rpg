@@ -1,5 +1,6 @@
 package br.edu.infnet.model.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +9,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import br.edu.infnet.model.exceptions.EquipamentoSemNivel;
 
@@ -25,7 +25,7 @@ public abstract class Equipamento {
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "idPersonagem")
 	private Personagem personagem;
 

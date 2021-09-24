@@ -12,4 +12,6 @@ public interface IConsumivelRepository extends CrudRepository<Consumivel, Intege
 	
 	@Query("from Consumivel c where c.usuario.id = :userId")
 	public List<Consumivel> getConsumivelList(Integer userId);
+
+	List<Consumivel> findByUsuarioIdOrderByNomeAsc(Integer userId);
 }

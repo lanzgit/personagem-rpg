@@ -13,4 +13,6 @@ public interface IArmaduraRepository extends CrudRepository<Armadura, Integer> {
 	
 	@Query("from Armadura a where a.usuario.id = :userId")
 	public List<Armadura> getArmaduraList(Integer userId);
+
+	List<Armadura> findByUsuarioIdOrderByNomeAsc(Integer userId);
 }

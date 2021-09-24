@@ -1,7 +1,7 @@
-<!-- <%@page import="br.edu.infnet.model.domain.Usuario"%>
+<%@page import="br.edu.infnet.model.domain.Usuario"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -49,6 +49,8 @@
 							<th>Nome</th>
 							<th>E-mail</th>
 							<th>Personagens</th>
+							<th>Equipamentos</th>
+							<th>Equipes</th>
 							<c:if test="${user.admin}">
 								<th>Acoes</th>
 							</c:if>
@@ -61,6 +63,8 @@
 								<td>${u.nome}</td>
 								<td>${u.email}</td>
 								<td>${u.personagens.size()}</td>
+								<td>${u.equipamentos.size()}</td>
+								<td>${u.equipes.size()}</td>
 								<c:if test="${user.admin}">
 									<td>
 										<c:choose>
